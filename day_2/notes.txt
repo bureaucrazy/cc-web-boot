@@ -1,0 +1,11 @@
+Create an SSH key.
+ssh-keygen -t rsa -b 4096 -C "bryan.lao.co@gmail.com"
+
+Folder where keys are stored
+~/.ssh
+
+git init
+
+git status
+
+git log
