@@ -1,0 +1,217 @@
+-T >> will skip generating test files. Later we will use rspec.
+
+1) Running this command will create a folder awesome_answers in the pwd.
+$ rails new awesome_answers -d postgresql -T
+
+2) To start the rails server
+$ rails s
+or
+$ bin/rails s
+# Note: the commands in the bin folder runs faster due to background process.
+
+3) Check in web browser. If you get a db error, do step 4.
+http://localhost:3000
+
+4) To create a db, run the command inside the folder created by step 1.
+$ bin/rake db:create
+
+5) Running this command will start atom in the current directoy.
+$ atom .
+
+6) Generate a controller file
+$ bin/rails g controller welcome
+# This will create the application_controller.rb and welcome_controller.rb files
+# in the controllers folder
+
+7)a. Generate a model (USE SINGULAR for model name)
+$ bin/rails g model question title:string body:text
+# This will create the question.rb file in the models folder and the
+# <date-time>_create_questions.rb file in db/migrate folder
+
+7)b. This will destroy a model (can be used for controllers also)
+$ bin/rails d model question
+
+8)a. To create a table based on step 7)a., run the command below.
+$ bin/rake db:migrate
+
+8)b. Reverses the last migration performed -- destructive!!
+$ bin/rake db:rollback
+
+8)c. Do the same to create another file in db/migrate (use plural)
+$ bin/rails g migration add_view_count_to_questions
+8)d. Edit the file and add an sql statement
+add_column :questions, :view_count, :integer
+8)e. Run the newly created db/migrate file by running command below.
+$ bin/rake db:migrate
+
+8)d. Uses the db/migrate/seeds.rb file to populate table with pre-defined values
+$ bin/rake db:seed
+
+9) !!DO NOT edit the db/schema.rb file!!
+
+10) Open the rails console
+$ bin/rails c
+OR
+$ bin/rails console
+
+10)a. If you get an error about missing gem dependencies
+$ bundle
+10)b. Edit the Gemfile and add the missing gems
+group :development, :test do
+  gem "interactive_editor"
+  gem "awesome_print"
+  gem "hirb"
+...
+end
+
+11) In the ruby console, you can write to your tables 3 ways:
+a. Method 1
+> q = Question.new
+> q.title = "My First Question"
+> q.body = "My first question body"
+> q.view_count = 0
+> q.save
+b. Method 2
+> q1 = Question.new({title: "My second question", body: "My second question body", view_count: 1})
+> q1.save
+c. Method 3
+> Question.create({title: "My third question", body: "My third question body", view_count: 2})
+
+12) Retrieve records from the table:
+a.
+> questions = Question.all
+> questions.each {|q| puts q.<column name>}
+
+b. This will throw an exception if no results found
+> questions = Question.find(<id_number>)
+
+c.
+> questions = Question.find_by_<column_name>(value)
+
+d.
+> questions = Question.where({view_count: 0, body: "My first question body"})
+
+e.
+> Question.where(["title = ? OR body = ?", "My first question", "My second question body"])
+
+13) Retrieve records from the table using wildcards
+a. For the word "first"
+first% - begins with keyword
+%first - ends with keyword
+%first% - begin, end, contain the keyword
+
+b. LIKE vs ILIKE
+LIKE - case sensitive
+ILIKE - case Insensitive
+> Question.where(["title LIKE ?", "%first%"])
+> Question.where(["title ILIKE ?", "%first%"])
+
+c. The problem with using interpolation like below, user can input SQL statements
+that can cause damage. So use the '?' so Rails can sanitize the input.
+> Question.where(["title ILIKE :search_term OR body ILIKE :search_term", {search_term: "%my%"}])
+
+d.
+> Question.where.not({view_count: 0})
+
+e. You can use .first and .last like in arrays, where n is the number of records
+> Question.first(n)
+
+f. Retrieve records with certain columns only
+> Question.select([:id, :title, :body]).all
+
+.all - all records
+.limit(n) - first n records
+.offset(n) - starts at the nth + 1 record
+.order('column_name') - asc order by column name
+.order('column_name').reverse_order - desc order by column name
+.order('column_name DESC') - same as above
+.order('table_name.column_name DESC')
+
+g. Chaining methods
+> Question.last(2).map(&:title)
+**NOTE: The &:title where the & is a shortcut for all elements.
+
+14) Updating
+> q = Question.find 3
+> q.view_count = 20
+> q.title = "abc"
+> q.view_count = 25
+> q.save
+OR
+> q.update({view_count: 30, title: "xyz"})
+
+15) Deleting
+> q = Question.find 3
+> q.destroy
+
+16) Validating
+> q.valid?
+> q.errors.full_messages  # this will display full error messages encountered
+
+Initialize                      .new
+        <- after_initialize
+        <- before_validation
+Validation                  \
+        <- after_validation  \
+        <- before_save        \
+Saving                         } .save
+        <- after save         /
+        <- before_commit     /
+Commit                      /
+
+
+Production vs Development
+Production >> cache on
+Development >> cache off
+
+*.yml >> config file format.
+.gitignore >> list of files and folders that will not be pushed to github.
+
+Bundler
+Used by bundler:
+Gemfile
+Gemfile.lock
+
+How to use in the Gemfile file:
+gem "<gem_name>", "<version>"
+If no version is specified, it will:
+a. check if the gem exists in local machine
+b. if exists, use that gem
+c. if not, download latest from source and use it
+
+After changing the Gemfile:
+Below will add/remove gems which will update the Gemfile.lock file.
+$ bundle
+or
+$ bundle install
+
+Will update the Gemfile.lock to use the latest as per conditions specified in Gemfile
+$ bundle update
+
+
+log/development.log can grow very big over time. Safe to delete once in a while.
+
+Adding to git
+
+1)
+$ git init
+$ git add -A
+$ git commit -m "Initial Commit - Empty Rails Project"
+
+
+
+MVC >> Model View Controller
+Model - CRUD operations only, connect to db
+View - Receive / Return data about html to controller
+Controller - Process input request and communicate to Model and View for the data to be sent back to the requester.
+
+
+File names
+index.html.erb
+index - action (method name in controller)
+html - format (Rails: default is HTML)
+erb - template system
+
+
+This will display the router information:
+http://localhost:3000/rails/info/routes

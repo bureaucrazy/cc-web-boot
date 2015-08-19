@@ -1,0 +1,49 @@
+<h1>Team Randomizer</h1>
+<form action="/team_randomizer" method="post">
+  <div>
+    <label for="teams">Team count:</label>
+    <input type="number" name="teams" id="teams" value="<%= session[:teams] %>">
+  </div>
+  <div>
+    <label for="names">Names:</label>
+  </div>
+  <div>
+    <input type="search" name="names" id="names" size="100"
+    value="<%= session[:names] %>" placeholder="Enter names as csv">
+  </div>
+  <div>
+    <input type="radio" name="at_random" id="at_random_true" value="1" <%= 'checked' if session[:at_random] == "1" %>>
+    <label for="at_random_true">Loose Randomly</label>
+    <input type="radio" name="at_random" id="at_random_false" value="0" <%= 'checked' if session[:at_random] == "0" %>>
+    <label for="at_random_false">Loose Sequentially</label>
+  </div>
+  <input type="submit" value="Assign">
+</form>
+<form action="/team_randomizer_names" method="post">
+  <input type="submit" value="Fake Names..">
+</form>
+<hr>
+<% if @error_message == '' %>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th bgcolor="navyblue">Team No.</th>
+        <th bgcolor="navyblue">Team Members</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @roster.teams.count.times do |counter| %>
+        <tr>
+          <td bgcolor="skyblue">Team <%= counter + 1 %></td>
+          <td bgcolor="lightblue"><%= @roster.teams[counter].join(", ") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+
+  <h4><%= @error_message %></h4>
+
+<% end %>

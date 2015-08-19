@@ -1,0 +1,1 @@
+gem install <gem-name> --no-ri --no-rdoc

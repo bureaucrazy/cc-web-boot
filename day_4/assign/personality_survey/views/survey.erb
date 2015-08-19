@@ -1,0 +1,28 @@
+<form action="/survey" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" name="name">
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" name="email">
+  </div>
+  <ol>
+    <li>You work best:</li>
+      <input type="radio" name="work-best" id="with-deadlines" value="with-deadlines" checked>
+      <label for="with-deadlines">With deadlines</label>
+      <input type="radio" name="work-best" id="without-deadlines" value="without-deadlines">
+      <label for="without-deadlines">Without deadlines</label>
+    <li>You consider yourself more:</li>
+      <input type="radio" name="consider-yourself" id="rational" value="rational" checked>
+      <label for="rational">Rational</label>
+      <input type="radio" name="consider-yourself" id="compassionate" value="compassionate">
+      <label for="compassionate">Compassionate</label>
+    <li>You are more interested in:</li>
+      <input type="radio" name="interested-in" id="ideas" value="ideas" checked>
+      <label for="ideas">Ideas</label>
+      <input type="radio" name="interested-in" id="facts" value="facts">
+      <label for="facts">Facts</label>
+  </ol>
+  <input type="submit" value="Find My Personality">
+</form>

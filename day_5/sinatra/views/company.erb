@@ -1,0 +1,11 @@
+<form  action="/company" method="post">
+  <input type="submit" value="Generate Company Catchphrase">
+</form>
+
+<!-- When nil, '@gen' will display nil while 'gen' will throw an error.
+Because the instance variable '@gen' can display nil, applying
+styling when there's nothing to display will look strange.
+This condition will only display the styling when content is present. -->
+<% if @gen %>
+  <div style="height: 20px; width: <%= @gen.length * 8 %>px; background-color: red"><%= @gen %></div>
+<% end %>

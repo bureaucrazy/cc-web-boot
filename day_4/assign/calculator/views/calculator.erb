@@ -1,0 +1,26 @@
+<form action="/calculated" method="post">
+  <div>
+    <label for="num1">Number 1</label>
+    <input type="number" id="num1" name="num1" value="<%= @num1 %>">
+  </div>
+  <div>
+    <select name="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">x</option>
+      <option value="/">/</option>
+    </select>
+  </div>
+  <div>
+    <label for="num2">Number 2</label>
+    <input type="number" id="num2" name="num2" value="<%= @num2 %>">
+  </div>
+  <div>
+    <input type="submit" name="calculate" value="=">
+  </div>
+</form>
+
+<% if @result %>
+  <hr>
+  <input type="button" name="result" value="<%= @result %>">
+<% end %>

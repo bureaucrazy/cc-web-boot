@@ -4,8 +4,26 @@ ssh-keygen -t rsa -b 4096 -C "bryan.lao.co@gmail.com"
 Folder where keys are stored
 ~/.ssh
 
+Setup git on a folder
+** caution, not advisable to setup git on a parent folder when git is also
+** setup on the sub-folders.
 git init
 
-git status
 
+git status
 git log
+
+Download to local a repository
+git clone
+git clone git@github.com:CodeCoreYVR/august-2015-ruby.git
+
+Retrieve latest code
+git pull
+
+Setup a git repository (from GitHub)
+echo "# cc-web-fun" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:bureaucrazy/cc-web-fun.git
+git push -u origin master

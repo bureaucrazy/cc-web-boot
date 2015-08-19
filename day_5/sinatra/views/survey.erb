@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Personality Survey</h1>
+    <form action="/survey" method="post">
+      <ol>
+        <li>You work best:</li>
+           <!-- id - used for linking input to a label (so you can click a label to trigger it)
+          name - the name of the key in the hash returned
+          value - the value assigned to the key in the hash returned -->
+          <input type="radio" name="work-best" id="with-deadlines" value="with-deadlines" checked>
+          <label for="with-deadlines">With deadlines</label>
+          <input type="radio" name="work-best" id="without-deadlines" value="without-deadlines">
+          <label for="without-deadlines">Without deadlines</label>
+        <li>You consider yourself more:</li>
+          <input type="radio" name="consider-yourself" id="rational" value="rational" checked>
+          <label for="rational">Rational</label>
+          <input type="radio" name="consider-yourself" id="compassionate" value="compassionate">
+          <label for="compassionate">Compassionate</label>
+        <li>You are more interested in:</li>
+          <input type="radio" name="interested-in" id="ideas" value="ideas" checked>
+          <label for="ideas">Ideas</label>
+          <input type="radio" name="interested-in" id="facts" value="facts">
+          <label for="facts">Facts</label>
+      </ol>
+      <input type="submit" value="Find My Personality">
+    </form>
+  </body>
+</html>

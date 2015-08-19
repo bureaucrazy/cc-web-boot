@@ -1,0 +1,12 @@
+<h1>FizzBuzz.. again</h1>
+<form action="/fizzbuzz" method="post">
+  <div><input type="number" name="num1" placeholder="First number" value=<%= @num1 %>></div>
+  <div><input type="number" name="num2" placeholder="Second number" value=<%= @num2 %>></div>
+  <div><input type="text" name="word1" placeholder="Fizz word" value=<%= @word1 %>></div>
+  <div><input type="text" name="word2" placeholder="Buzz word" value=<%= @word2 %>></div>
+  <div><input type="number" name="first" placeholder="Starting #" value=<%= @first %>></div>
+  <div><input type="number" name="last" placeholder="Ending #" value=<%= @last %>></div>
+  <div><input type="submit" value="Submit">
+</form>
+
+<div><%= @output %></div>
