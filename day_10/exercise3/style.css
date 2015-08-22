@@ -1,0 +1,22 @@
+div {
+  height: 200px;
+  border-radius: 10px;
+  font-size: 48pt;
+  text-align: center;
+}
+
+.redbg {
+  background-color: orange;
+}
+
+.bluebg {
+  background-color: skyblue;
+}
+
+.greenbg {
+  background-color: lime;
+}
+
+.brownbg {
+  background-color: tan;
+}

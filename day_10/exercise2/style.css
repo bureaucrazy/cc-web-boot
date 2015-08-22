@@ -1,0 +1,29 @@
+td, table {
+  /*border-collapse;*/
+}
+table {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  width: 300px;
+}
+
+td {
+  border: 1px solid #000000;
+  padding-left: 5px;
+}
+
+th {
+  font-size: 36px;
+}
+
+.vitamins {
+  border-top: 10px solid #000000;
+}
+
+.indented {
+  padding-left: 20px;
+}
+
+.centered {
+  text-align: center;
+}

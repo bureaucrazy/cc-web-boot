@@ -160,6 +160,7 @@
 // myArray.push(6)
 // myArray.length - same as Ruby
 // myArray.pop() - same as Ruby
+// myArray.shift() - same as Ruby
 // myArray.push() - same as Ruby
 
 // 1. Exercise

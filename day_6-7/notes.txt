@@ -9,6 +9,10 @@ or
 $ bin/rails s
 # Note: the commands in the bin folder runs faster due to background process.
 
+# This will run rails and listen to port 3001
+$ bin/rails s -p 3001
+
+
 3) Check in web browser. If you get a db error, do step 4.
 http://localhost:3000
 
