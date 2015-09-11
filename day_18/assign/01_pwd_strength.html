@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="01_pwd_strength.js"></script>
+    <meta charset="utf-8">
+    <title>Password Strength</title>
+  </head>
+  <body>
+    <div>
+      <p>Create an HTML page that contains a password field. As the user types,
+      indicate the strength of their password (weak, strong, etc.),
+      following the rules below.</p>
+
+      <p>A password is considered strong when:</p>
+
+      <ul>
+        <li>It has more than 8 characters</li>
+        <li>It has at least one lower case character</li>
+        <li>It has at least one upper case character</li>
+        <li>It has at least one non alphanumeric character</li>
+        <li>It has more than 12 characters</li>
+      </ul>
+      <p>Each of these criteria gives the password 1 point. A password is considered:</p>
+
+      <ul>
+        <li>0 points: terrible</li>
+        <li>1 points: weak</li>
+        <li>2 points: meh meh</li>
+        <li>3 points: good</li>
+        <li>4 points: strong</li>
+        <li>5 points: awesome!</li>
+      </ul>
+
+      <p><strong>Bonus</strong></p>
+      <p>Mark a password as terrible if it's included in a blacklist.
+      E.g.: password, 123456, 12345678, admin, master, 111111, etc.
+      Maybe even have a witty comment show up, like "Are you kidding me?"</p>
+
+      <p>Add a toggle (checkbox) to display the password (change the field
+      to type=text and populate it with the current value).
+      Unchecking the toggle switches it back to type=password</p>
+    </div>
+    <div>
+      <label for="pwd">Password: </label>
+      <input type="password" id="pwd" name="pwd" placeholder="Type your password">
+      <button type="button" id="show" name="show">Show Password</input>
+    </div>
+    <div>
+      <p id="rating"></p>
+      <p id="suggestion"></p>      
+    </div>
+  </body>
+</html>

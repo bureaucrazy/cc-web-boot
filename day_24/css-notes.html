@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Notes</title>
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <style media="screen">
+      .special {
+        color: red;
+      }
+
+      .inl {
+        display: inline;
+      }
+
+      .inl-block {
+        display: inline-block;
+      }
+
+      .float-box {
+        width: 100px;
+        height: 100px;
+        float: right;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+      }
+
+      .rectangle {
+        width: 500px;
+        height: 100px;
+        background-color: purple;
+        float: right;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      body {
+        font-family: "Indie Flower", "Helvetica", "Arial";
+      }
+
+      .cameleon {
+        width: 100px;
+        height: 100px;
+      }
+
+      @media (max-width: 600px) {
+        .cameleon {
+          background-color: lightgreen;
+        }
+      }
+
+      @media (min-width: 600px) {
+        .cameleon {
+          background-color: pink;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+      <span style="color: red">this is inline</span> tempor incididunt ut labore et
+      <div class="special">this is a block</div> magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure <img class="box inl" src="cookie.png"/>dolor
+      in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.</p>
+    <p>Regular Block</p>
+    <div class="red box"></div>
+    <div class="green box"></div>
+    <div class="blue box"></div>
+    <div style="clear: both"></div>
+    <p>Inline Style</p>
+    <div class="red box inl">hello</div>
+    <div class="green box inl">hello</div>
+    <div class="blue box inl">hello</div>
+    <div style="clear: both"/></div>
+    <p>Inline-Block Style</p>
+    <div class="red box inl-block"></div>
+    <div class="green box inl-block"></div>
+    <div class="blue box inl-block"></div>
+    <div style="clear: both"/></div>
+    <p>Float Style</p>
+    <div class="red float-box"></div>
+    <div class="green float-box"></div>
+    <div class="blue float-box"></div>
+    <div class="rectangle"></div>
+    <p>Media Queries</p>
+    <div class="cameleon">
+
+    </div>
+  </body>
+</html>

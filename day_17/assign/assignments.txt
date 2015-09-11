@@ -1,0 +1,188 @@
+Assignment: Card Shuffling
+
+Create a javascript object that stores deck of cards.
+
+- Add a print method on it that will print the cards in order.
+- Add a method shuffle that will shuffle the cards
+- Add a randomCard method that give your a random card from
+your collectionobj["Diamond"]=[1,2,3,4,5,6,7,8,9,10,11,12,13]
+
+
+var sample = [1,"J","Q","K","A",2,3,4,5,6,7,8,9];
+var collectionobj = {
+  diamond: sample,
+  heart: sample,
+  club: sample,
+  spade: sample,
+  printCards: function() {
+    console.log("Diamonds " + this.diamond.sort());
+    console.log("Hearts " + this.heart.sort());
+    console.log("Clubs " + this.club.sort());
+    console.log("Spade " + this.spade.sort());
+  },
+  shuffleCards: function() {
+    console.log("Diamonds " + getRandomSubarray(this.diamond, this.diamond.length));
+    console.log("Hearts " + getRandomSubarray(this.heart, this.heart.length));
+    console.log("Clubs " + getRandomSubarray(this.club, this.club.length));
+    console.log("Spade " + getRandomSubarray(this.spade, this.spade.length));
+  },
+  randomCard: function() {
+    var suite = Math.random();
+    if (suite < 0.25) {
+      console.log(getRandomSubarray(this.diamond, 1) + " of Diamonds.");
+    } else if (suite < 0.50) {
+      console.log(getRandomSubarray(this.heart, 1) + " of Hearts.");
+    } else if (suite < 0.75) {
+      console.log(getRandomSubarray(this.club, 1) + " of Clubs.");
+    } else {
+      console.log(getRandomSubarray(this.spade, 1) + " of Spade.");
+    }
+  }
+}
+var getRandomSubarray = function(arr, size) {
+    var shuffled = arr.slice(0), i = arr.length, min = i - size, temp, index;
+    while (i-- > min) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(min);
+}
+
+
+------------------------------
+
+
+Assignment: FizzBuzz...It's never going to leave you alone..
+
+Write a function that takes two numbers and it then prints "fizz" if the
+number is divisible by the first number and "buzz" if the number is
+divisible by the second number and fizzbuzz if it's divisible by both.
+
+var fizzBuzz = function(num1, num2) {
+  var output = [];
+  for (n = 1; n < 101; n++){
+    if (n % (num1 * num2) === 0) {
+      output.push("fizzbuzz");
+    } else if (n % num1 === 0){
+      output.push("fizz");
+    } else if (n % num2 === 0){
+      output.push("buzz");
+    } else {
+      output.push(n);
+    }
+  }
+  return output.join();
+}
+
+-------------------------------
+
+Assignment: Largest number in an array
+
+Build a function that takes an array and return the largest number.
+If there are no number in it, it should return "there are no numbers".
+It should accept an array with any type of objects.
+
+var largestNumber = function(array) {
+  var output = "";
+  for (n = 0; n < array.length; n++) {
+    if (!isNaN(array[n])){
+      output = output || array[n];
+      if (output < array[n]) {output = array[n];}
+    }
+  }
+  if (output === "") {output = "there are no numbers";}
+  return output;
+}
+
+
+-------------------------------
+
+Assignment: Personable Persons
+
+Create two person objects with an "age" attribute and a "name" attribute.
+- Add a "greet" method to both people that accepts a person as a parameter and outputs the following:
+"Hello, [name]. I am [name]. Pleased to meet you." if the other person is older than this person.
+"Yo [name]. I'm totally [name]. Wsup!." if the other person is older than this person.
+
+personA = {
+  age: 20,
+  name: "Bob",
+  greet: function(objPerson) {
+    if (this.age > objPerson.age) {
+      console.log("Yo " + objPerson.name + ". I'm totally " + objPerson.name + ". Wsup!")
+    } else {
+      console.log("Hello, " + objPerson.name + ". I am " + objPerson.name + ". Pleased to meet you.")
+    }
+  }
+}
+personB = {
+  age: 50,
+  name: "Mike",
+  greet: function(objPerson) {
+    if (this.age > objPerson.age) {
+      console.log("Yo " + objPerson.name + ". I'm totally " + objPerson.name + ". Wsup!")
+    } else {
+      console.log("Hello, " + objPerson.name + ". I am " + objPerson.name + ". Pleased to meet you.")
+    }
+  }
+}
+
+-------------------------------
+
+Assignment: Decaying Count Next Module
+
+Write some code that writes "1" to the console,
+then 1 second later writes "2" to the console,
+then 2 seconds after that writes "3" to the console, ...,
+until it gets to "10".
+
+var n = 0;
+var counter = function() {
+  n++;
+  document.write(n);
+  if (n < 10) { setTimeout(counter, n * 500) };
+}
+counter();
+
+-------------------------------
+
+Assignment: Possibly Positive
+
+Write a function called isPositive which takes one parameter.
+If that parameter is a number, return true if it is
+greater than or equal to 0 and false otherwise.
+If that parameter is a string, always return false.
+
+var isPositive = function(input) {
+  if (parseInt(input) >= 0) {
+      return true;
+  } else {
+    return false;
+  }
+}
+
+-------------------------------
+
+Assignment: Filtering Arrays
+
+Write a function called filter that takes two parameters,
+an array (a) and another function (fn).
+This function should return a new array containing all
+the items in a for which fn returns true. For example:
+
+filter([1,2,3], function(x) {
+  return x > 2;
+});
+
+Test filter using the isPositive function you wrote above
+and the following array [-5, 0, 1, 'car'].
+
+var filter = function(a, fn) {
+  var output = [];
+  for (x = 0; x < a.length; x++) {
+    output.push(fn(a[x]));
+  };
+  return output;
+}

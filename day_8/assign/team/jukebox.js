@@ -1,16 +1,18 @@
+// Jukebox has many Songs can have many Notes can have many Properties
+
 function parseSong(notes) {
   var notesArray = [];
   var notesObject = {};
   var songArray = [];
 
-  var notesArray = notes.split(' ');
+  if (notes.trim() === '' || notes === null) { return null }
+
+  notesArray = notes.split(' ');
 
   for (element = 0; element < notesArray.length; element++) {
-    // songArray.push(parseNote(notesArray[element]));
     if (notesArray[element] !== '') {
       notesObject = parseNote(notesArray[element]);
       if (notesObject !== null) {
-        // songArray.push(parseNote(notesArray[element]));
         songArray.push(notesObject);
       }
     }
@@ -32,7 +34,7 @@ function parseNote(note) {
   if (isNaN(parseInt(noteArray[noteArray.length - 1]))) {
     noteArray[noteArray.length] = beatsDefault;
   } else {
-    noteArray[1] = parseInt(noteArray[1])
+    noteArray[1] = parseInt(noteArray[1]);
   }
 
   pitch = noteArray[0].charAt(0).toUpperCase() + noteArray[0].substring(1);

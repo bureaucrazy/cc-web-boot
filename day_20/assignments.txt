@@ -1,0 +1,93 @@
+1. Craigslist Hacker
+a. Get the HREF attribute of the first link on the page
+$("a[href]").first();
+b. Get the number of links on this page
+$("a[href]").length
+c. Change the text for all links to be [Your Name]
+$("a[href]").html('[Your Name]');
+d. Make Craigslist's logo link to http://www.google.com
+$("a[href*='craigslist.org/about']").first().attr('href', 'http://www.google.com')
+
+2. Wiki Author
+a. Change every second paragraph to read "[Your Name] wuz here!".
+$("p:odd").html("[Your Name] wuz here!")
+b. Add your own paragraph to the BEGINNING of any wikipedia article.
+$("div#bodyContent").prepend("<p>My own paragraph.</p>")
+c. Add your own paragraph to the END of any wikipedia article.
+$("div#bodyContent").append("<p>My own paragraph.</p>")
+
+3. [Bonus]WikiWriter
+Wikipedia thinks it would be awesome if their articles "typed" themselves
+out over time, instead of all of the text showing up at once.
+They've hired you to build a prototype for them.
+
+Write a function wikiWriter that, when called from the console on any
+Wikipedia article, clears the article text, and writes it back out to the
+page one character at a time.
+
+Get all paragraphs in article body:
+
+var wikiWriter = function() {
+  var allP = "div#mw-content-text p",
+      arrP = $(allP).toArray(),
+      lenP = arrP.length,
+      typeThis       = [];
+
+  // Process all P
+  for (n=0; n < lenP; n++) {
+    var unfiltered = arrP[n];
+    if (unfiltered.length === 0) {
+      // To return content in original place
+      typeThis.push(null);
+    } else {
+      var arrByLetter    = unfiltered.innerHTML.split(""),
+          arrTagFriendly = [],
+          letters        = "";
+
+      for (x=0; x < arrByLetter.length; x++) {
+        letters += arrByLetter[x];
+        if (letters[0] !== "<") {
+          arrTagFriendly.push(letters);
+          letters = "";
+        } else if (letters.length > 1) {
+          if (letters[letters.length - 1] === ">") {
+            arrTagFriendly.push(letters);
+            letters = "";
+          }
+        }
+      }
+      typeThis.push(arrTagFriendly);
+    };
+  };
+
+  $(allP).html("");
+
+  var p = 0;
+  var l = 0;
+  var typeIt = function() {
+    if (typeThis[p] === null) {
+      p++;
+    } else {
+      thisP = allP + ":eq(" + p + ")";
+
+      if(p < typeThis.length) {
+        if(l < typeThis[p].length) {
+          $(thisP).html($(thisP).html() + typeThis[p][l]);
+          l++;
+        };
+      };
+      if(l === typeThis[p].length) {
+        console.log(" >>> " + thisP);
+        $(thisP).html(typeThis[p].join(""));
+        l = 0;
+        p++;
+        if(p >= typeThis.length) {
+          clearInterval(slowly);
+        };
+//        console.log(">>> Next P <<<")
+      };
+    };
+  };
+
+  var slowly = setInterval(typeIt, 50);
+}

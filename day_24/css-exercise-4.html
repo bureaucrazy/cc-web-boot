@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Media Queries Exercise 1</title>
+  </head>
+  <body>
+    <h1> Media Queries Exercise </h1>
+    <style>
+      .left {
+        background-color: pink;
+      }
+      .mid {
+        background-color: yellow;
+      }
+      .right {
+        background-color: lightblue;
+      }
+
+      @media (min-width: 600px) {
+        .responsive-box {
+          height: 100px;
+          width: 30%;
+          float: left;
+          margin: 10px;
+          border: 2px black solid;
+          border-radius: 10px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .responsive-box {
+          height: 100px;
+          width: 98%;
+          float: none;
+          margin: 10px;
+          border: 2px black solid;
+          border-radius: 10px;
+        }
+      }
+
+    </style>
+    <div class="left responsive-box"></div>
+    <div class="mid responsive-box"></div>
+    <div class="right responsive-box"></div>
+  </body>
+</html>
